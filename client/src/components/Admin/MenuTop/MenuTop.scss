@@ -1,11 +1,12 @@
 @import "../../../scss/index.scss";
 
 
-.menu-top{
+.menu-top {
     display:flex;
     background-color: transparent;
     color: $font-light;
     border: 0;
+    min-height: 100vh;
 
     &:hover{
         color:$primary-color;
@@ -15,14 +16,14 @@
         color:$font-light;
     }
 
-    &__left {
+    .menu-top__left {
         &-logo {
             width: 150px;
             padding: 0 10px;
         }
     }
 
-    &__right{
+    .menu-top__right{
         position: absolute;
         right: 0;
     }
