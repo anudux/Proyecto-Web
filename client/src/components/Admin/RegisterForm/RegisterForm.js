@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Form,Icon,Input,Button,Checkbox,notification} from "antd";
+import {Form, Icon, Input, Button, Checkbox, notification} from "antd";
 import {emailValidation,minLenghthValidation} from "../../../utils/formValidation";
 
 
@@ -41,28 +41,50 @@ export default function RegisterForm() {
     };
 
     const inputValidation = e => {
-        const {type,name} = e.target;
+        const { type , name } = e.target;
+        
         if (type === "email") {
-            setFormValid ({...formValid,[name]: emailValidation(e.target)});
+            setFormValid({ ...formValid, [name]: emailValidation(e.target) });
         }
-        if (type ==="password"){
-            setFormValid ({...formValid,[name]: minLenghthValidation (e.target,6)}); 
+        if (type === "password") {
+            setFormValid({ ...formValid, [name]: minLenghthValidation(e.target, 6) }); 
         }
-        if (type==="checkbox") {
-            setFormValid ({...formValid,[name]: e.target.checked});
+        if (type=== "checkbox") {
+            setFormValid({ ...formValid, [name]: e.target.checked });
         }
      };
 
     const register = e => {
         e.preventDefault();
-        console.log(formValid);
-    }
+        const { email, password, repeatPassword, privacyPolicy } = formValid;
+        const emailVal = inputs.email;
+        const passwordVal = inputs.password;
+        const repeatPasswordVal = inputs.repeatPassword;
+        const privacyPolicyVal = inputs.privacyPolicy;
+
+        if (!emailVal || !passwordVal || repeatPasswordVal || privacyPolicyVal ){
+            notification["error"]({
+                message: "Todos los campos son obligatorios"
+            });
+        } else {
+            if(passwordVal !== repeatPassword) {
+                notification["error"]({
+                    message: "Las constraseñas no coinciden"
+                });
+            } else {
+                notification["success"]({
+                    message:"Cuenta Creada"
+                });
+        }
+        
+        }
+    };
     
     return (
         <Form className="register-form" onSubmit={register} onChange={changeForm}>
             <Form.Item>
                 <Input
-                prefix={<Icon type="user" style={{color:"rgba(0,0,0,.25"}} />}
+                prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25" }} />}
                 type="email"
                 name="email"
                 placeholder="Correo Electronico"
@@ -77,14 +99,14 @@ export default function RegisterForm() {
                 type="password"
                 name="password"
                 placeholder="Contraseña"
-                className="register-form__imput"
+                className="register-form__input"
                 onChange={inputValidation}
                 value={inputs.password}           
                 />
             </Form.Item>
             <Form.Item>
                 <Input
-                prefix={<Icon type="lock" style={{color:"rgba(0,0,0,.25"}}/>}
+                prefix={<Icon type="lock" style={{color:"rgba(0,0,0.25"}}/>}
                 type="password"
                 name="repeatPassword"
                 placeholder="Repetir Constraseña"

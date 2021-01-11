@@ -1,11 +1,12 @@
 export function minLenghthValidation (inputData, minLenght ){
-    const {value} = inputData;
+    const { value } = inputData;
+    
     removeClassErrorSucess(inputData);
-    if(value.lenght >= minLenght) {
+    
+    if (value.lenght >= minLenght) {
         inputData.classList.add("sucess");
         return true;
-    }
-    else{
+    } else {
         inputData.classList.add("error");
         return false;
     }

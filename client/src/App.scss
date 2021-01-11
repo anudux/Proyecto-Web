@@ -1,8 +1,12 @@
 @import"./scss/index.scss";
 
+.sucess {
+    border : 1px solid $sucess;
+    background-color: $background-sucess;
 
-.app {
-h1{
-    color:$primary-color;
 }
+
+.error {
+    border: 1px solid $error;
+    background-color:  $background-error;
 }
