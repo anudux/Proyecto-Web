@@ -67,7 +67,7 @@ export default function RegisterForm() {
                 message: "Todos los campos son obligatorios"
             });
         } else {
-            if (passwordVal !== repeatPassword) {
+            if (passwordVal !== repeatPasswordVal) {
                 notification["error"]({
                     message: "Las constraseñas no coinciden"
                 });
