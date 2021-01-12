@@ -62,12 +62,12 @@ export default function RegisterForm() {
         const repeatPasswordVal = inputs.repeatPassword;
         const privacyPolicyVal = inputs.privacyPolicy;
 
-        if (!emailVal || !passwordVal || repeatPasswordVal || privacyPolicyVal ){
+        if (!emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal ){
             notification["error"]({
                 message: "Todos los campos son obligatorios"
             });
         } else {
-            if(passwordVal !== repeatPassword) {
+            if (passwordVal !== repeatPassword) {
                 notification["error"]({
                     message: "Las constraseñas no coinciden"
                 });
