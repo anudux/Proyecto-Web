@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Icon, Input, Button, Checkbox, notification } from "antd";
 import {
   emailValidation,
-  minLenghthValidation,
+  minLengthValidation,
 } from "../../../utils/formValidation";
 import { singUpApi } from "../../../api/user";
 
@@ -43,7 +43,7 @@ export default function RegisterForm() {
       setFormValid({ ...formValid, [name]: emailValidation(e.target) });
     }
     if (type === "password") {
-      setFormValid({ ...formValid, [name]: minLenghthValidation(e.target, 6) });
+      setFormValid({ ...formValid, [name]: minLengthValidation(e.target, 6) });
     }
     if (type === "checkbox") {
       setFormValid({ ...formValid, [name]: e.target.checked });
@@ -78,12 +78,41 @@ export default function RegisterForm() {
           notification["success"]({
             message: result.message
           });
+          resetForm();
         }
       }
     };
   }
 
-    return (
+  const resetForm = () => {
+      const inputs = document.getElementsByTagName("imput");
+
+      for (let i = 0; i < inputs.length; i++){
+        inputs[i].classList.remove("sucess");
+        inputs[i].classList.remove("error");
+
+      }
+      
+      setInputs ({
+        email: "",
+    password: "",
+    repeatPassword: "",
+    privacyPolicy: false,
+      });
+
+      setFormValid ({
+        email: false,
+        password: false,
+        repeatPassword: false,
+        privacyPolicy: false,
+      })
+  
+  
+  
+  
+    }
+
+      return (
       <Form className="register-form" onSubmit={register} onChange={changeForm}>
         <Form.Item>
           <Input
