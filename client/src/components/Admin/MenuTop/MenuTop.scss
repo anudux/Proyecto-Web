@@ -1,33 +1,28 @@
 @import "../../../scss/index.scss";
 
-
 .menu-top {
-    display:flex;
-    background-color: transparent;
+  display: flex;
+  background-color: transparent;
+  color: $font-light;
+  border: 0;
+
+  &:hover {
+    color: $primary-color;
+  }
+  &:focus,
+  &:active {
     color: $font-light;
-    border: 0;
-    
+  }
 
-    &:hover{
-        color:$primary-color;
+  .menu-top__left {
+    &-logo {
+      width: 150px;
+      padding: 0 10px;
     }
-    &:focus,
-    &:active {
-        color:$font-light;
-    }
+  }
 
-    .menu-top__left {
-        &-logo {
-            width: 150px;
-            padding: 0 10px;
-        }
-    }
-
-    .menu-top__right{
-        position: absolute;
-        right: 0;
-    }
-
-
-
+  .menu-top__right {
+    position: absolute;
+    right: 0;
+  }
 }

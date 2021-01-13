@@ -1,44 +1,35 @@
 $defaultFontSize: 16px;
 
+$primary-color: #0098d3;
+$primary-color-hover: #0280b3;
 
+$menu-color: #252527;
 
-$primary-color:#0098d3;
-$primary-color-hover:#0280b3;
+$font-light: #fff;
+$font-grey-light: #e8e8e8;
+$font-grey: #808080;
+$font-grey-dark: #000;
+$font-dark-light: #252527;
+$front-dark: #000;
 
+$border-light: #fff;
+$border-grey-light: #e8e8e8;
+$border-grey: #808080;
+$border-grey-dark: #595959;
+$border-dark-light: #252527;
+$boder-dark: #000;
 
-$menu-color:#252527;
+$background-light: #fff;
+$background-grey-light: #e8e8e8;
+$background-grey: #808080;
+$background-grey-dark: #595959;
+$background-dark-light: #252527;
+$background-dark: #000;
+$background-sucess: #84b84c1f;
+$background-error: #ff01011f;
 
-
-$font-light:#fff;
-$font-grey-light:#e8e8e8;
-$font-grey:#808080;
-$font-grey-dark:#000;
-$font-dark-light:#252527;
-$front-dark:#000;
-
-
-
-$border-light:#fff;
-$border-grey-light:#e8e8e8;
-$border-grey:#808080;
-$border-grey-dark:#595959;
-$border-dark-light:#252527;
-$boder-dark:#000;
-
-
-
-$background-light:#fff;
-$background-grey-light:#e8e8e8;
-$background-grey:#808080;
-$background-grey-dark:#595959;
-$background-dark-light:#252527;
-$background-dark:#000;
-$background-sucess:#84b84c1f;
-$background-error:  #ff01011f;
-
-
-$sucess:#84b84c;
-$error:#f00;
+$sucess: #84b84c;
+$error: #f00;
 
 //Reponsive down size
 
@@ -48,7 +39,6 @@ $media-breackpoint-dows-md: 767.198px;
 $media-breackpoint-dows-lg: 991.198px;
 $media-breackpoint-dows-xl: 1199.198px;
 
-
 //Responsive up size
 
 $media-breackpoint-up-xs: 320px;
@@ -56,5 +46,3 @@ $media-breackpoint-up-sm: 576px;
 $media-breackpoint-up-md: 768px;
 $media-breackpoint-up-lg: 992px;
 $media-breackpoint-up-xl: 1200px;
-
-
