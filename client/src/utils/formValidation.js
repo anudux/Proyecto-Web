@@ -1,4 +1,4 @@
-export function minLengthValidation (inputData, minLength) {
+export function minLengthValidation(inputData, minLength) {
   const { value } = inputData;
 
   removeClassErrorSucess(inputData);
