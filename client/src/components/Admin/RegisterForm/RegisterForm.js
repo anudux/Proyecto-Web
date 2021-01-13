@@ -50,7 +50,7 @@ export default function RegisterForm() {
     }
   };
 
-  const register = async (e) => {
+  const register = async (e) =>{
     e.preventDefault();
     const { email, password, repeatPassword, privacyPolicy } = formValid;
     const emailVal = inputs.email;
@@ -60,27 +60,28 @@ export default function RegisterForm() {
 
     if (!emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
       notification["error"]({
-        message: "Todos los campos son obligatorios",
+        message: "Todos los campos son obligatorios"
       });
     } else {
       if (passwordVal !== repeatPasswordVal) {
         notification["error"]({
-          message: "Las constraseñas no coinciden",
+          message: "Las constraseñas no coinciden."
         });
       } else {
         const result = await singUpApi(inputs);
 
         if (!result.ok) {
           notification["error"]({
-            message: result.message,
+            message: result.message
           });
         } else {
           notification["success"]({
-            message: result.message,
+            message: result.message
           });
         }
       }
-    }
+    };
+  }
 
     return (
       <Form className="register-form" onSubmit={register} onChange={changeForm}>
@@ -133,5 +134,5 @@ export default function RegisterForm() {
         </Form.Item>
       </Form>
     );
-  };
+  
 }
