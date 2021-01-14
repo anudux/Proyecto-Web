@@ -4,7 +4,7 @@ import {
   emailValidation,
   minLengthValidation,
 } from "../../../utils/formValidation";
-import { singUpApi } from "../../../api/user";
+import { signUpApi } from "../../../api/user";
 
 import "./RegisterForm.scss";
 
@@ -52,7 +52,6 @@ export default function RegisterForm() {
 
   const register = async (e) => {
     e.preventDefault();
-    const { email, password, repeatPassword, privacyPolicy } = formValid;
     const emailVal = inputs.email;
     const passwordVal = inputs.password;
     const repeatPasswordVal = inputs.repeatPassword;
@@ -68,7 +67,7 @@ export default function RegisterForm() {
           message: "Las constraseñas no coinciden.",
         });
       } else {
-        const result = await singUpApi(inputs);
+        const result = await signUpApi(inputs);
 
         if (!result.ok) {
           notification["error"]({
