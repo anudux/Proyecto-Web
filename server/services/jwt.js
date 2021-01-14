@@ -26,5 +26,5 @@ exports.createRefreshToken = function (user) {
 };
 
 exports.decodeToken = function (token) {
-  return jwt.encode(token, SECRET_KEY, true);
+  return jwt.decode(token, SECRET_KEY, true);
 };
