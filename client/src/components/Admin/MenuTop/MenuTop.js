@@ -13,14 +13,14 @@ export default function MenuTop(props) {
           src={JaviLogo}
           alt="Javier Lavilla"
         />
-        <button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
+        <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
           <Icon type={menuCollapsed ? "menu-unfold" : "menu-fold"} />
-        </button>
+        </Button>
       </div>
       <div className="menu-top__right">
-        <button type="link" onClick={() => console.log("Log Off")}>
+        <Button type="link" onClick={() => console.log("Log Off")}>
           <Icon type="poweroff" />
-        </button>
+        </Button>
       </div>
     </div>
   );
