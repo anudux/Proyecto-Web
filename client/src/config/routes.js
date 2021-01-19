@@ -5,6 +5,7 @@ import LayoutBasic from "../layouts/LayoutsBasic";
 //AdminPages
 import AdminHome from "../pages/Admin";
 import AdminSignIn from "../pages/Admin/SignIn/";
+import AdminUsers from "../pages/Admin/Users";
 
 //Pages
 
@@ -31,6 +32,12 @@ const routes = [
         component: AdminSignIn,
         exact: true,
       },
+      {
+        path: "/admin/users",
+        component: AdminUsers,
+        exact: true,
+      },
+
       {
         component: Error404,
       },

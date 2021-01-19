@@ -1,4 +1,5 @@
 import React, { useState, useEffect, createContext } from "react";
+import jwtDecode from "jwt-decode";
 import {
   getAccessTokenApi,
   getRefreshTokenApi,
@@ -39,7 +40,7 @@ function checkUserLogin(setUser) {
   } else {
     setUser({
       isLoading: false,
-      user: accessToken,
+      user: jwtDecode(accessToken),
     });
   }
 }
