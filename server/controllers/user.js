@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const bcrypt = require("bcrypt-nodejs");
 const jwt = require("../services/jwt");
 const { model } = require("../models/user");
@@ -101,4 +103,29 @@ function getUsersActive(req, res) {
   });
 }
 
-module.exports = { signUp, signIn, getUsers, getUsersActive };
+function uploadAvatar(req, res) {
+  const params = req.params;
+
+  User.findById({ _id: params.id }, (err, userData) => {
+    if (err) {
+      res.status(500).send({ message: "Error del servidor." });
+    } else {
+      if (!userData) {
+        res.status(404).send({ message: "No se ha encontrado ningún usuario." });
+      } else {
+        let user = userData;
+
+        if (req.files) {
+          let filePath = req.files.avatar.path;
+          let fileSplit = filePath.split("/");
+          let fileName = fileSplit[2];
+
+          let extSplit = fileName.split(".");
+          console.log(extSplit);
+        }
+      }
+    }
+  });
+}
+
+module.exports = { signUp, signIn, getUsers, getUsersActive, uploadAvatar };
