@@ -17,13 +17,13 @@ export default function EditUserForm(props) {
   });
 
   useEffect(() => {
-    if (avatar) {
+    if(avatar) {
       setUserData({ ...userData, avatar });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [avatar]);
 
-  const updateUser = (e) => {
+  const updateUser = e => {
     e.preventDefault();
     console.log(userData);
   };
@@ -43,14 +43,14 @@ export default function EditUserForm(props) {
 function UploadAvatar(props) {
   const { avatar, setAvatar } = props;
   const onDrop = useCallback(
-    (acceptedFiles) => {
+    acceptedFiles => {
       const file = acceptedFiles[0];
       setAvatar({ file, preview: URL.createObjectURL(file) });
     },
     [setAvatar]
   );
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "image/jpeg,image/png",
+    accept: "image/jpeg, image/png",
     noKeyboard: true,
     onDrop,
   });
@@ -148,7 +148,7 @@ function EditForm(props) {
               type="password"
               placeholder="Repetir contraseña"
               onChange={(e) =>
-                setUserData({ ...userData, Repeatpassword: e.target.value })
+                setUserData({ ...userData, repeatPassword: e.target.value })
               }
             />
           </Form.Item>
