@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt-nodejs");
 const jwt = require("../services/jwt");
 //const { model } = require("../models/user");
 const User = require("../models/user");
+const { exists } = require("../models/user");
 
 function signUp(req, res) {
   const user = new User();
@@ -155,4 +156,43 @@ function uploadAvatar(req, res) {
   });
 }
 
-module.exports = { signUp, signIn, getUsers, getUsersActive, uploadAvatar };
+function getAvatar(req, res) {
+  const avatarName = req.params.avatarName;
+  const filePath = "./uploads/avatar/" + avatarName;
+
+  fs.exists(filePath, (exists) => {
+    if (!exists) {
+      res.status(404).send({ message: "El avatar que busca no existe." });
+    } else {
+      res.sendFile(path.resolve(filePath));
+    }
+  });
+}
+
+function updateUser(req, res) {
+  const userData = req.body;
+  const params = req.params;
+  User.findByIdAndUpdate({ _id: params.id }, userData, (err, userUpdate) => {
+    if (err) {
+      res.status(500).send({ message: "Error del servidor." });
+    } else {
+      if (!userUpdate) {
+        res
+          .status(404)
+          .send({ message: "No se ha encontrado ningún usuario." });
+      } else {
+        res.status(200).send({ message: "Usuario actualizado correctamente." });
+      }
+    }
+  });
+}
+
+module.exports = {
+  signUp,
+  signIn,
+  getUsers,
+  getUsersActive,
+  uploadAvatar,
+  getAvatar,
+  updateUser,
+};
