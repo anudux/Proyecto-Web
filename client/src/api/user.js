@@ -1,4 +1,3 @@
-import responsiveObserve from "antd/lib/_util/responsiveObserve";
 import { basePath, apiVersion } from "./config";
 
 export function signUpApi(data) {
@@ -154,6 +153,26 @@ export function activateUserApi(token, userId, status) {
     body: JSON.stringify({
       active: status,
     }),
+  };
+
+  return fetch(url, params)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      return result.message;
+    })
+    .catch((err) => {
+      return err.message;
+    });
+}
+
+export function deleteUserApi(token, userId) {
+  const url = `${basePath}/${apiVersion}/delete-user/${userId}`;
+
+  const params = {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json", Authorization: token },
   };
 
   return fetch(url, params)
