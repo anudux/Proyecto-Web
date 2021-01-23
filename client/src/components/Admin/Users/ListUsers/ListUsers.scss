@@ -1,13 +1,20 @@
 .list-users {
-  .list-users__switch {
+  .list-users__header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 20px;
 
-    > button {
-      margin-right: 20px;
+    .list-users__header-switch {
+      display: flex;
+      align-items: center;
+
+      > button {
+        margin-right: 20px;
+      }
     }
   }
+
   .users-active {
     background-color: #fff;
     padding: 10px 20px;

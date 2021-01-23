@@ -24,9 +24,7 @@ function signUp(req, res) {
     } else {
       bcrypt.hash(password, null, null, function (err, hash) {
         if (err) {
-          res
-            .status(500)
-            .send({ message: "Error al encriptar la constraseña." });
+          res.status(500).send({ message: "Error al encriptar la constraseña." });
         } else {
           user.password = hash;
           user.save((err, userStored) => {
@@ -113,9 +111,7 @@ function uploadAvatar(req, res) {
       res.status(500).send({ message: "Error del servidor." });
     } else {
       if (!userData) {
-        res
-          .status(404)
-          .send({ message: "No se ha encontrado ningún usuario." });
+        res.status(404).send({ message: "No se ha encontrado ningún usuario." });
       } else {
         let user = userData;
 
@@ -133,23 +129,17 @@ function uploadAvatar(req, res) {
             });
           } else {
             user.avatar = fileName;
-            User.findByIdAndUpdate(
-              { _id: params.id },
-              user,
-              (err, userResult) => {
-                if (err) {
-                  res.status(500).send({ message: "Error del servidor." });
+            User.findByIdAndUpdate({ _id: params.id }, user, (err, userResult) => {
+              if (err) {
+                res.status(500).send({ message: "Error del servidor." });
+              } else {
+                if (!userResult) {
+                  res.status(404).send({ message: "No se ha encontrado ningún usuario." });
                 } else {
-                  if (!userResult) {
-                    res
-                      .status(404)
-                      .send({ message: "No se ha encontrado ningún usuario." });
-                  } else {
-                    res.status(200).send({ avatarName: fileName });
-                  }
+                  res.status(200).send({ avatarName: fileName });
                 }
               }
-            );
+            });
           }
         }
       }
@@ -190,9 +180,7 @@ async function updateUser(req, res) {
       res.status(500).send({ message: "Error del servidor." });
     } else {
       if (!userUpdate) {
-        res
-          .status(404)
-          .send({ message: "No se ha encontrado ningún usuario." });
+        res.status(404).send({ message: "No se ha encontrado ningún usuario." });
       } else {
         res.status(200).send({ message: "Usuario actualizado correctamente." });
       }
@@ -214,9 +202,7 @@ function activeUser(req, res) {
         if (active === true) {
           res.status(200).send({ message: "Usuario activado correctamente." });
         } else {
-          res
-            .status(200)
-            .send({ message: "Usuario desactivado correctamente." });
+          res.status(200).send({ message: "Usuario desactivado correctamente." });
         }
       }
     }
@@ -233,12 +219,45 @@ function deleteUser(req, res) {
       if (!userDeleted) {
         res.status(404).send({ message: "Usuario no encontrado." });
       } else {
-        res
-          .status(200)
-          .send({ message: "El usuerio se ha eliminado correctamente." });
+        res.status(200).send({ message: "El usuario se ha eliminado correctamente." });
       }
     }
   });
+}
+
+function signUpAdmin(req, res) {
+  const user = new User();
+
+  const { name, lastname, email, role, password } = req.body;
+  user.name = name;
+  user.lastname = lastname;
+  user.email = email.toLowerCase();
+  user.role = role;
+  user.active = true;
+
+  if (!password) {
+    res.status(500).send({ message: "La contraseña es obligatoria." });
+  } else {
+    bcrypt.hash(password, null, null, (err, hash) => {
+      if (err) {
+        res.status(500).send({ message: "Error al encriptar la contraseña." });
+      } else {
+        user.password = hash;
+
+        user.save((err, userStored) => {
+          if (err) {
+            res.status(500).send({ message: "El usuario ya existe." });
+          } else {
+            if (!userStored) {
+              res.status(500).send({ message: "Error al crear el nuevo usuario." });
+            } else {
+              res.status(200).send({ message: "El usuario se ha creado correctamente." });
+            }
+          }
+        });
+      }
+    });
+  }
 }
 
 module.exports = {
@@ -251,4 +270,5 @@ module.exports = {
   updateUser,
   activeUser,
   deleteUser,
+  signUpAdmin,
 };
