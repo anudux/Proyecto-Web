@@ -9,11 +9,7 @@ function MenuSider(props) {
 
   return (
     <Sider className="admin-sider" collapsed={menuCollapsed}>
-      <Menu
-        theme="dark"
-        mode="inline"
-        defaultSelectedKeys={[location.pathname]}
-      >
+      <Menu theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
         <Menu.Item key="/admin">
           <Link to={"/admin"}>
             <Icon type="home" />
@@ -24,6 +20,12 @@ function MenuSider(props) {
           <Link to={"/admin/users"}>
             <Icon type="user" />
             <span className="nav-text">Usuarios</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/menu">
+          <Link to={"/admin/menu"}>
+            <Icon type="menu" />
+            <span className="nav-text">Menú</span>
           </Link>
         </Menu.Item>
       </Menu>
