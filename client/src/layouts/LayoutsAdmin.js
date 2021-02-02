@@ -33,7 +33,7 @@ export default function LayoutAdmin(props) {
           <Content className="layout-admin__content">
             <LoadRoutes routes={routes} />
           </Content>
-          <Footer className="layout-admin__footer">Javier Lavilla 2021</Footer>
+          <Footer className="layout-admin__footer"> Javier Lavilla 2021 ® </Footer>
         </Layout>
       </Layout>
     );
