@@ -6,7 +6,7 @@ import { getAccessTokenApi } from "../../../../api/auth";
 import "./AddMenuWebForm.scss";
 
 export default function AddMenuWebForm(props) {
-  const { setIsVisibleModal, SetReloadMenuWeb } = props;
+  const { setIsVisibleModal, setReloadMenuWeb } = props;
   const [menuWebData, setMenuWebData] = useState({});
 
   const addMenu = (event) => {
@@ -16,8 +16,31 @@ export default function AddMenuWebForm(props) {
       title: menuWebData.title,
       url: (menuWebData.http ? menuWebData.http : "http://") + menuWebData.url,
     };
+    if (!finalData.title || !finalData.url || !menuWebData.url) {
+      notification["error"]({
+        message: "Todos los campos deben estar completos.",
+      });
+    } else {
+      const accessToken = getAccessTokenApi();
+      finalData.active = false;
+      finalData.order = 1000;
 
-    console.log(finalData);
+      addMenuApi(accessToken, finalData)
+        .then((response) => {
+          notification["success"]({
+            message: response,
+          });
+          setIsVisibleModal(false);
+          setReloadMenuWeb(true);
+          setMenuWebData({});
+          finalData = {};
+        })
+        .catch(() => {
+          notification["error"]({
+            message: "Error en el servidor.",
+          });
+        });
+    }
   };
   return (
     <div className="add-menu-web-form">
@@ -34,7 +57,7 @@ function AddForm(props) {
     <Select
       defaultValue="http://"
       style={{ width: 90 }}
-      onchange={(e) => setMenuWebData({ ...menuWebData, http: e })}
+      onChange={(e) => setMenuWebData({ ...menuWebData, http: e })}
     >
       <Option value="http://">http://</Option>
       <Option value="https://">https://</Option>
