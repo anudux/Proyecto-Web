@@ -15,7 +15,7 @@ export default function ReviewsCourses() {
       <Row>
         <Col lg={4} />
         <Col lg={16} className="reviews-courses__title">
-          <h2>Forma parte de más de los 35 mil estudiantes que estan aprendiendo con mis cursos</h2>
+          <h2>Forma parte de más de los 35 mil estudiantes que están aprendiendo con mis cursos</h2>
         </Col>
         <Col lg={4} />
       </Row>

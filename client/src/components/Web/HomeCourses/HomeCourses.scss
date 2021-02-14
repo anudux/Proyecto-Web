@@ -32,10 +32,12 @@
 
     .ant-card-body {
       text-align: center;
+      min-height: 130px;
 
       .ant-card-meta-title,
       .ant-card-meta-description {
         color: $font-light;
+        padding-top: 10px;
       }
       .ant-card-meta-title {
         font-weight: bold;

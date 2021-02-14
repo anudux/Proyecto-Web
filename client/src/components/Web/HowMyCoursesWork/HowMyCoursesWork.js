@@ -9,7 +9,7 @@ export default function HowMyCoursesWork() {
       <Col lg={24} className="how-my-courses-work__title">
         <h2>¿Cómo funcionan mis cursos?</h2>
         <h3>
-          Cada curso cuenta con contenido bajo la web de Udemy, activa las 24 hs, los 365 dias{" "}
+          Cada curso cuenta con contenido bajo la web de Udemy, activa las 24 hs, los 365 días{" "}
         </h3>
       </Col>
       <Col lg={4} />
@@ -26,8 +26,9 @@ export default function HowMyCoursesWork() {
             <CardInfo
               icon="key"
               title="Acceso 24/7"
-              description="Accede a los cursos en cualquier momento desde cualquier lugar."
+              description="Accede a los cursos en cualquier momento desde cualquier lugar."
             />
+            r
           </Col>
           <Col md={8}>
             <CardInfo
@@ -42,14 +43,14 @@ export default function HowMyCoursesWork() {
             <CardInfo
               icon="user"
               title="Mejora tu perfil"
-              description="Aprende y mejora tu perfil para mantenerte al dia de nuevas tecnologias."
+              description="Aprende y mejora tu perfil para mantenerte al día de nuevas tecnologías."
             />
           </Col>
           <Col md={8}>
             <CardInfo
               icon="dollar"
               title="Precios bajos"
-              description="Obtene los cursos que necesitas al precio de oferta."
+              description="Obtené los cursos que necesitas al precio de oferta."
             />
           </Col>
           <Col md={8}>

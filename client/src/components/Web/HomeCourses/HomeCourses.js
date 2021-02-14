@@ -23,7 +23,7 @@ export default function HomeCourses() {
             <CardCourse
               image={reactJsHooks}
               title="React JS Hooks"
-              subtitle="Intermedio - React"
+              subtitle="Intermedio - React JavaScript"
               link="https://www.udemy.com/course/react-js-de-cero-a-experto-creado-aplicaciones-reales/"
             />
           </Col>
