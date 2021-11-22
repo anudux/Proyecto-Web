@@ -34,7 +34,7 @@ export default function SocialLinks() {
         <FacebookIcon />
       </a>
       <a
-        href="https://www.linkedin.com/in/javier-l-ab50a5117"
+        href="https://www.linkedin.com/in/javierhlavilla/"
         className="linkedin"
         target="_blank"
         rel="noopener noreferrer"
